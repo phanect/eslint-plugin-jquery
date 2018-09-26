@@ -15,11 +15,13 @@
     "pretest": "eslint .",
     "test": "mocha --reporter dot tests/"
   },
+  "dependencies": {
+    "eslint": "^5.4.0"
+  },
   "peerDependencies": {
     "eslint": ">=2.3.0"
   },
   "devDependencies": {
-    "eslint": "^5.4.0",
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.14.2"

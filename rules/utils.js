@@ -1,5 +1,7 @@
 'use strict'
 
+const eslint = require('eslint')
+
 function traverse(node) {
   while (node) {
     switch (node.type) {
@@ -33,7 +35,24 @@ function isjQuery(node) {
   return id && id.name.startsWith('$')
 }
 
+function indent(code) {
+  return new eslint.Linter().verifyAndFix(code.trim(), {
+    env: {
+      node: true,
+      es6: true
+    },
+    parserOptions: {
+      ecmaVersion: 2018
+    },
+    rules: {
+      indent: ['error', 2],
+      'no-trailing-spaces': 'error'
+    }
+  }).output
+}
+
 module.exports = {
   traverse: traverse,
-  isjQuery: isjQuery
+  isjQuery: isjQuery,
+  indent: indent
 }
